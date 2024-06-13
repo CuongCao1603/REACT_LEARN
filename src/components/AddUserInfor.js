@@ -1,9 +1,5 @@
-// class component
-// function component
-
 import React from "react";
-import UserInfor from "./AddUserInfor";
-class MyComponent extends React.Component {
+class AddUserInfor extends React.Component {
   // Kiem soat data trong component, state la 1 object trong js
   // Thay doi gia tri thi gia tri cung thay doi theo
   state = {
@@ -43,7 +39,11 @@ class MyComponent extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.handleAddNewUser({
+      id: Math.floor(Math.random() * 100 + 1) + "-random",
+      name: this.state.name,
+      age: this.state.age,
+    });
   };
 
   render() {
@@ -73,10 +73,9 @@ class MyComponent extends React.Component {
           ></input>
           <button>Submit</button>
         </form>
-        {/* <UserInfor></UserInfor> */}
       </div>
     );
   }
 }
 
-export default MyComponent;
+export default AddUserInfor;
